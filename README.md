@@ -31,6 +31,12 @@ grep -c '^refs/pull/.*/head$' .git/filter-repo/changed-refs
 git remote add git@github.com-fartbagxp:fartbagxp/git-filter-repo-test.git
 ```
 
+- Once we feel satisified with the changes, run the forced push.
+
+```bash
+git push --force --mirror origin
+```
+
 ## Helpful Introduction
 
 - [Elijah Newren's talk on git-repo-filter](https://www.youtube.com/watch?v=KXPmiKfNlZE) is an excellent introduction to learning how to use git-repo-filter.
