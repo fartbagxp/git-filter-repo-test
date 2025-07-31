@@ -20,16 +20,28 @@ This workflow removes a file from Git history.
    git-filter-repo --invert-paths --path data/test/test3.json
    ```
 
-1. Verify what has been removed.
+1. Verify what has been removed through pull requests.
+
+   > [!TIP]
+   > If all git pushes were made directly to the trunk branch instead of pull requests, the result will be 0.
 
    ```bash
    grep -c '^refs/pull/.*/head$' .git/filter-repo/changed-refs
    ```
 
-1. Add the remote origin back. This is because git-filter-repo creates history [incompatible with the original git history](https://github.com/newren/git-filter-repo/issues/46#issuecomment-573733491).
+1. Restore the remote origin on the local checkout. This is because git-filter-repo creates history [incompatible with the original git history](https://github.com/newren/git-filter-repo/issues/46#issuecomment-573733491).
 
    ```bash
    git remote add git@github.com-fartbagxp:fartbagxp/git-filter-repo-test.git
+   ```
+
+1. (Optional) Verify what has been removed through pull requests.
+
+   > [!TIP]
+   > If all git pushes were made directly to the trunk branch instead of pull requests, the result will be 0.
+
+   ```bash
+   grep -c '^refs/pull/.*/head$' .git/filter-repo/changed-refs
    ```
 
 1. Once we feel satisified with the changes, run the forced push.
@@ -62,10 +74,19 @@ This workflow keeps the current version of a file while wiping its entire git hi
    git filter-repo --force --strip-blobs-with-ids blobs-to-delete.txt
    ```
 
-1. Add the remote origin back. This is because git-filter-repo creates history [incompatible with the original git history](https://github.com/newren/git-filter-repo/issues/46#issuecomment-573733491).
+1. Restore the remote origin on the local checkout. This is because git-filter-repo creates history [incompatible with the original git history](https://github.com/newren/git-filter-repo/issues/46#issuecomment-573733491).
 
    ```bash
    git remote add git@github.com-fartbagxp:fartbagxp/git-filter-repo-test.git
+   ```
+
+1. (Optional) Verify what has been removed through pull requests.
+
+   > [!TIP]
+   > If all git pushes were made directly to the trunk branch instead of pull requests, the result will be 0.
+
+   ```bash
+   grep -c '^refs/pull/.*/head$' .git/filter-repo/changed-refs
    ```
 
 1. Once we feel satisified with the changes, run the forced push.
