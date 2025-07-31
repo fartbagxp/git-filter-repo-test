@@ -37,12 +37,12 @@ This workflow removes a file from Git history.
 
 1. (Optional) Verify what has been removed through pull requests.
 
-   > [!TIP]
-   > If all git pushes were made directly to the trunk branch instead of pull requests, the result will be 0.
-
    ```bash
    grep -c '^refs/pull/.*/head$' .git/filter-repo/changed-refs
    ```
+
+> [!TIP]
+> If all git pushes were made directly to the trunk branch instead of pull requests, the result will be 0.
 
 1. Once we feel satisified with the changes, run the forced push.
 
@@ -82,12 +82,12 @@ This workflow keeps the current version of a file while wiping its entire git hi
 
 1. (Optional) Verify what has been removed through pull requests.
 
-   > [!TIP]
-   > If all git pushes were made directly to the trunk branch instead of pull requests, the result will be 0.
-
    ```bash
    grep -c '^refs/pull/.*/head$' .git/filter-repo/changed-refs
    ```
+
+> [!TIP]
+> If all git pushes were made directly to the trunk branch instead of pull requests, the result will be 0.
 
 1. Once we feel satisified with the changes, run the forced push.
 
