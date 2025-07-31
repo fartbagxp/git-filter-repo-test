@@ -1,0 +1,15 @@
+{
+  "name": "Sample Test 6",
+  "version": 6,
+  "active": true,
+  "items": [
+    {
+      "id": 11,
+      "value": "Item Eleven"
+    },
+    {
+      "id": 12,
+      "value": "Item Twelve"
+    }
+  ]
+}
