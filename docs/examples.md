@@ -14,7 +14,7 @@ This workflow removes a file from Git history.
    git remote -v
    ```
 
-1. Run git-filter-repo on the file - data/test/test3.json.
+1. Run git-filter-repo on the file - data/test/test3.json. You can run this command numerous times to remove selective files.
 
    ```bash
    git-filter-repo --invert-paths --path data/test/test3.json
@@ -23,7 +23,7 @@ This workflow removes a file from Git history.
 1. Restore the remote origin on the local checkout. This is because git-filter-repo creates history [incompatible with the original git history](https://github.com/newren/git-filter-repo/issues/46#issuecomment-573733491).
 
    ```bash
-   git remote add git@github.com-fartbagxp:fartbagxp/git-filter-repo-test.git
+   git remote add origin git@github.com-fartbagxp:fartbagxp/git-filter-repo-test.git
    ```
 
 1. (Optional) Verify what has been removed through pull requests.
@@ -68,7 +68,7 @@ This workflow keeps the current version of a file while wiping its entire git hi
 1. Restore the remote origin on the local checkout. This is because git-filter-repo creates history [incompatible with the original git history](https://github.com/newren/git-filter-repo/issues/46#issuecomment-573733491).
 
    ```bash
-   git remote add git@github.com-fartbagxp:fartbagxp/git-filter-repo-test.git
+   git remote add origin git@github.com-fartbagxp:fartbagxp/git-filter-repo-test.git
    ```
 
 1. (Optional) Verify what has been removed through pull requests.
