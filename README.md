@@ -4,6 +4,7 @@ To properly rewrite Git history, we rely on a tool called [git-filter-repo](http
 
 Use cases on how to use this:
 
+- [Removing Sensitive Info (eg. passwords)](./docs/example.md#removing-sensitive-info) replaces sensitive information that we define to the word `***REMOVED***`.
 - [Remove a file](./docs/examples.md#removing-a-file) wipes a single file from Git history.
 - [Keeping last commit of file](./docs/examples.md#keep-last-commit-of-file) wipes previous history before last of any particular file.
 
