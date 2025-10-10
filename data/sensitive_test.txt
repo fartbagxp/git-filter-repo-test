@@ -1,0 +1,3 @@
+api_token = "***REMOVED***"
+key = "***REMOVED***"
+non_sensitive = "12345"

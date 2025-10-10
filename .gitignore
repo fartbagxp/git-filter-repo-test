@@ -151,3 +151,4 @@ $RECYCLE.BIN/
 
 ## Any temporary lock files
 .~lock*
+password.txt
