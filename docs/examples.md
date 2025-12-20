@@ -140,8 +140,6 @@ Prerequisites:
 
 1. Review the log file `large-files-with-dates.log` to confirm what was removed.
 
-## Important Notes
-
 > [!WARNING]
 >
 > - This process rewrites Git history and changes all commit SHAs
