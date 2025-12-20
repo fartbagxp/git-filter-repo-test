@@ -4,8 +4,10 @@ To properly rewrite Git history, we rely on a tool called [git-filter-repo](http
 
 Use cases on how to use this:
 
-- [Removing Sensitive Info (eg. passwords)](./docs/example.md#removing-sensitive-info) replaces sensitive information that we define to the word `***REMOVED***`.
+- [Repository Migration with Large File Filtering](./docs/migration.md) migrates repositories while filtering out files larger than 100MB (GitHub's limit), with logging of removed files.
+- [Removing Sensitive Info (eg. passwords)](./docs/examples.md#removing-sensitive-info) replaces sensitive information that we define to the word `***REMOVED***`.
 - [Remove a file](./docs/examples.md#removing-a-file) wipes a single file from Git history.
+- [Removing Files Larger than 100MB](./docs/examples.md#removing-files-larger-than-100mb) wipes a set of files larger than 100MB.
 - [Keeping last commit of file](./docs/examples.md#keep-last-commit-of-file) wipes previous history before last of any particular file.
 
 ## Helpful Introduction

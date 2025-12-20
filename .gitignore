@@ -153,3 +153,5 @@ $RECYCLE.BIN/
 .~lock*
 password.txt
 passwords.txt
+
+*.log

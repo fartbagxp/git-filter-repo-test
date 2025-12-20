@@ -4,6 +4,7 @@ These are use cases on how to use [git-filter-repo](https://github.com/newren/gi
 
 - [Removing Sensitive Info (eg. passwords)](#removing-sensitive-info)
 - [Removing a File](#removing-a-file)
+- [Removing Files Larger than 100MB](#removing-files-larger-than-100mb)
 - [Keep Last Commit of File](#keep-last-commit-of-file)
 
 ## Removing Sensitive Info
@@ -73,6 +74,87 @@ This workflow removes a file from Git history.
    ```bash
    git push --force --mirror origin
    ```
+
+## Removing Files Larger than 100MB
+
+This workflow covers a technique to filter out files larger than 100MB, which is GitHub's file size limit when migrating from another environment (e.g Azure Devops, Gitlab, Bitbucket).
+
+Prerequisites:
+
+- [git-filter-repo](https://github.com/newren/git-filter-repo) installed
+- Access to both source and destination repositories
+- Sufficient disk space for the repository clone
+
+---
+
+1. Create a mirror clone of the source repository
+
+   ```bash
+   git clone --mirror "source-repository-url"
+   cd "repository-name"
+   ```
+
+1. Analyze and identify large files.
+
+   ```bash
+   git-filter-repo --analyze --force
+   ```
+
+   This creates an analysis in `.git/filter-repo/analysis/`. Review the `blob-shas-and-paths.txt` file to see all blobs with their sizes.
+
+   Alternately, run `bash find-objects-exceed-size.sh 100` to search for files exceeding 100MB. This creates `large-files-to-remove.log` containing the size, filename, and last commit date of each large file.
+
+1. Keep track of the repository size. This is used for verification later.
+
+   ```bash
+   bash verify-repo-size.sh
+   ```
+
+1. Remove files larger than 100MB from history
+
+   ```bash
+   git-filter-repo --strip-blobs-bigger-than 100M --force
+   ```
+
+   This command removes all files larger than 100MB from the entire Git history.
+
+1. Set up the new remote repository
+
+   If migrating to a new GitHub repository:
+
+   ```bash
+   git remote add origin "new-github-repository-url"
+   ```
+
+1. Push to the new repository
+
+   ```bash
+   git push --mirror origin
+   ```
+
+1. Verify that if files were deleted, that the repository is smaller in size.
+
+   ```bash
+   bash verify-repo-size.sh
+   ```
+
+1. Review the log file `large-files-with-dates.log` to confirm what was removed.
+
+## Important Notes
+
+> [!WARNING]
+>
+> - This process rewrites Git history and changes all commit SHAs
+> - All contributors must re-clone the repository after migration
+> - Open pull requests will need to be recreated
+> - Keep the `large-files-with-dates.log` file for reference of removed files
+
+> [!TIP]
+> If you need to preserve large files, consider:
+>
+> - Storing them in [Git LFS (Large File Storage)](https://git-lfs.github.com/)
+> - Moving them to a separate storage system (S3, Azure Blob Storage, etc.)
+> - Using GitHub Releases for binary assets
 
 ## Keep Last Commit of File
 
